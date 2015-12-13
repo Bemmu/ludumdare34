@@ -583,8 +583,8 @@ function loadedOneSound() {
 function playSound(phrase, callback) {
 	var fn = 'mp3/' + phrase + '.mp3';
 	l("Playing sound " + fn);
-//	var audio = new Audio(fn);
-	var audio = preloaded[phrase];
+	var audio = new Audio(fn);
+//	var audio = preloaded[phrase];
 	if (typeof callback === "function") {
 		audio.onended = callback;
 	}
