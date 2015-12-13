@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<head>
+	<script src="http://mohayonao.github.io/timbre.js/timbre.dev.js"></script>	
+<!--	<script src="timbrehack.js"></script>-->
+</head>
+<body>
+	<button onclick="start()">Start</button>
+<script>
+
+var reverb, sound, out;
+
+function start() {
+	reverb = T("reverb", {room:0.6, damp:1.0, mix:0.45});
+	sound = T("pan", {pos:1}, reverb);
+	out = T("+", sound);
+	out.play();
+	heartbeat();
+}
+
+// This will slow down when changing tab. Cannot be helped, because browser
+// clamps timers to 1000ms when not active. 
+var bpm = 120;
+function heartbeat() {
+	// console.log("heartbeat");
+	var sine1 = T("fami", {freq:480, mul:0.02});
+	var sine2 = T("pulse", {freq:480, mul:0.015});
+	var perc = T("perc", {r:210}, sine1, sine2);
+	perc.bang();
+
+	var asine1 = T("fami", {freq:480, mul:0.02});
+	var asine2 = T("pulse", {freq:480, mul:0.015});
+	var aperc = T("perc", {r:210}, asine1, asine2);
+
+	reverb.removeAll();
+	perc.on("ended", function() {
+		perc.pause();
+		// console.log("ended");
+//		this.reset();
+//		this.removeAllListeners();
+//	  this.pause();
+	}).bang().appendTo(reverb);
+
+	aperc.on("ended", function() {
+		aperc.pause();
+		// console.log("ended");
+//		this.reset();
+//		this.removeAllListeners();
+//	  this.pause();
+	}).bang().appendTo(reverb);
+
+//	sound.play();
+
+	setTimeout(heartbeat, (1000*60)/bpm);
+}
+
+</script>
+</body>

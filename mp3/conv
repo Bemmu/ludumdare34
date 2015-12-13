@@ -1,0 +1,2 @@
+for f in *.wav; do echo "Converting $f"; g=`basename $f .wav`; ffmpeg -sameq -i $f $g.mp3 || echo FAILED; done
+

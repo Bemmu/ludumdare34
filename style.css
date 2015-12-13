@@ -1,0 +1,53 @@
+canvas {
+	border: solid 0px black;
+}
+
+html, body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.guidance {
+	position: relative;
+	top: 20%;
+	transform: translateY(-20%);
+	text-align: center;
+	font-size: 150%;
+}
+
+button {
+	font-size: 100%;
+	border-radius: 15%;
+	padding: 5px;
+	width: 80%;
+	background-color: #9999ff;
+}
+
+.guidance #started {
+	display: none;
+}
+
+#loading {
+	font-size: 100%;	
+}
+
+#ready {
+	display: none;
+}
+
+.spinner {
+   height: 60px;
+   width: 60px;
+   margin: 20px auto 0px auto;
+   position: relative;
+   animation: rotation .6s infinite linear;
+   border-left: 6px solid rgba(99,99,255,.50);
+   border-radius: 100%;
+}
+
+@keyframes rotation {
+   from {transform: rotate(0deg);}
+   to {transform: rotate(359deg);}
+}
