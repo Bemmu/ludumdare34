@@ -5,11 +5,14 @@ $(function () {
 function start() {
 	//playSound("pain");
 	click = function () { 
-		click = n;
+		click = function () { };
 
 //		wheelchair();		
 //		letsHaveACode();
 		canYouHearMe();
+	
+//		junction();
+
 //		roomFront();
 
 //		cafe();
@@ -174,9 +177,6 @@ function next() {
 	setTimeout(start, 100);
 }
 
-
-var n = function () { };
-
 function think(phrase, delay, callback) {
 	say(phrase, delay, callback, true);	
 }
@@ -184,10 +184,12 @@ function think(phrase, delay, callback) {
 function tapTwiceIfUnderstand() {
 	say("3", 1000, function () {
 		taps = function (n) {
+			taps = function () { };
 			l("got " + n + " taps");
 			if (n === 2) {
 				letsHaveACode();
 			} else {
+				taps = function () { };
 				say("dont", 1000, function () {
 					tapTwiceIfUnderstand();
 				});
@@ -263,6 +265,7 @@ function couldStopAlarm(callback) {
 function junction() {
 	couldStopAlarm(function () { 
 		ask("junction", function () { 
+			l("going west from junction");
 			say("west", 1000, prescriptionDesk);
 		}, function () { 
 			ask("howabouteast", function () { 
@@ -292,6 +295,7 @@ function steal() {
 }
 
 function prescriptionDesk() { 
+	l("arrive at prescription desk");
 	if (fireAlarm) {
 		ask("nurseAway", steal, prescriptionDeskNavi);
 	} else {
@@ -425,6 +429,7 @@ function menu() {
 function letsHaveACode() {
 	say("5", 1000, function () {
 		taps = function (n) {
+			taps = function () { };
 			l("got " + n + " taps");
 			if (n === 2) {
 				menu();
@@ -438,15 +443,18 @@ function letsHaveACode() {
 }
 
 function ask(phrase, yesCallback, noCallback) { 
+	taps = function () { };
 	l("asking: " + phrase);
 	var stillWaiting = null;
 	say(phrase, 1000, function () {
 		taps = function (n) { 
 			if (stillWaiting) clearInterval(stillWaiting);
 			if (n === 2) {
+				taps = function () { };
 				l("answered yes");
 				yesCallback();
 			} else if (n === 1) {
+				taps = function () { };
 				l("answered no");
 				noCallback();
 			} else {
@@ -457,7 +465,7 @@ function ask(phrase, yesCallback, noCallback) {
 
 		stillWaiting = setInterval(function () { 
 			var tmp = taps;
-			taps = n;
+			taps = function () { };
 			playSound("stillwaiting", function () { 
 				clearInterval(stillWaiting);
 				taps = tmp;
@@ -487,7 +495,7 @@ function sawAFingerMove() {
 }
 
 function canYouHearMe() { 
-	click = n;
+	click = function () { };
 	var fingerMoved = false;
 	click = function () { 
 		fingerMoved = true;
