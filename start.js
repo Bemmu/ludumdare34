@@ -10,6 +10,7 @@ function start() {
 //		wheelchair();		
 //		letsHaveACode();
 		canYouHearMe();
+//		cafe();
 	
 //		junction();
 
@@ -278,7 +279,7 @@ function junction() {
 }
 
 function prescriptionDeskNavi() { 
-	ask("presNavi", function () { 
+	ask("presnavi", function () { 
 		say("north", 1000, cafe);
 	}, function () { 
 		say("east", 1000, junction);		
@@ -297,9 +298,9 @@ function steal() {
 function prescriptionDesk() { 
 	l("arrive at prescription desk");
 	if (fireAlarm) {
-		ask("nurseAway", steal, prescriptionDeskNavi);
+		ask("nurseaway", steal, prescriptionDeskNavi);
 	} else {
-		say("nursePresent", 1000, prescriptionDeskNavi);
+		say("nursepresent", 1000, prescriptionDeskNavi);
 	}
 }
 
